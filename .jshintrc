@@ -1,0 +1,26 @@
+{
+  "node": true,
+  "indent": 2,
+  "laxbreak": true,
+  "expr": true,
+  "white": true,
+  "undef": true,
+  "unused": true,
+  "supernew": true
+
+,
+
+  "globals": {
+    "require": false,
+    "exports": true,
+    "module": false,
+    "describe": false,
+    "it": false,
+    "before": false,
+    "beforeEach": false,
+    "after": false,
+    "afterEach": false
+  },
+  "browser": true,
+
+}
