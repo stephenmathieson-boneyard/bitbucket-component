@@ -13,7 +13,6 @@ function clean() {
 describe('bitbucket-component', function () {
   var opts = {
     directory: path.join(__dirname, 'temp'),
-    url: 'https://bitbucket.org/{owner}/{name}/get/{version}.tar.gz',
     maxAge: Infinity
   };
 
@@ -26,6 +25,22 @@ describe('bitbucket-component', function () {
     app.post.should.be.a.function;
   });
 
+  it('should throw when provided a password, but no username', function () {
+    try {
+      bc({ password: 'foo' });
+    } catch (e) {
+      e.message.should.be.equal('must provide a username');
+    }
+  });
+
+  it('should throw when provided a username, but no password', function () {
+    try {
+      bc({ username: 'foo' });
+    } catch (e) {
+      e.message.should.be.equal('must provide a password');
+    }
+  });
+
   describe('.bitbucket', function () {
     it('should be an object', function () {
       bc.bitbucket.should.be.an.object;
@@ -33,12 +48,18 @@ describe('bitbucket-component', function () {
 
     describe('.get()', function () {
       before(clean);
+      beforeEach(function () {
+        opts.url = 'https://bitbucket.org/{owner}/{name}/get/{version}.tar.gz';
+      });
       after(clean);
+      afterEach(function () {
+        delete opts.url;
+      });
 
       it('should download and extract tarballs into opts.directory', function (done) {
+
         bc.bitbucket.get(opts, 'stephenmathieson', 'testything', '0.0.0', function (err, dir) {
           if (err) throw err;
-
           dir.should.be.equal(path.join(opts.directory, 'stephenmathieson', 'testything', '0.0.0'));
           fs.existsSync(path.join(dir, 'component.json')).should.be.true;
           fs.existsSync(path.join(dir, 'index.js')).should.be.true;

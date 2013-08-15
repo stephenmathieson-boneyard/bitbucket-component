@@ -1,20 +1,19 @@
+#!/usr/bin/env node
 
 var bc = require('..'),
     express = require('express'),
     path = require('path'),
-    program = require('commander');
+    Command = require('commander').Command;
 
+var program = new Command('bitbucket-component');
 
 program
-  .option('-u, --username <username>', 'bitbucket.org username')
-  .option('-w, --password <password>', 'bitbucket.org password')
+  .version(require('../package.json').version)
+  .option('-u, --username [username]', 'bitbucket.org username')
+  .option('-w, --password [password]', 'bitbucket.org password')
   .option('-d, --directory [directory]', 'directory for repositories')
   .option('-p, --port [port]', 'port for server', 3000)
   .parse(process.argv);
-
-if (!program.username || !program.password) {
-  program.help();
-}
 
 if (!program.directory) program.directory = path.join(process.cwd(), 'repos');
 
