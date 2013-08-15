@@ -12,17 +12,6 @@ function clean() {
 
 describe('bitbucket-component', function () {
 
-  // it('should set default options', function () {
-  //   var opts = {};
-
-  //   bc(opts);
-
-  //   assert(opts.directory === null);
-  //   assert(opts.username === null);
-  //   assert(opts.password === null);
-  //   assert(opts.url);
-  // });
-
   it('should return an express app', function () {
     var app = bc({});
 
@@ -126,6 +115,12 @@ describe('bitbucket-component', function () {
         });
     });
 
+    it('should handle directories', function (done) {
+      request(app)
+        .get('/stephenmathieson/testything/0.0.4/lib/apples.js')
+        .expect(200)
+        .expect('\nmodule.exports = \'apples\'\n', done);
+    });
   });
 
 });
