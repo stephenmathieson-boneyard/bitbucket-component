@@ -11,6 +11,11 @@ function clean() {
 }
 
 describe('bitbucket-component', function () {
+  var opts = {
+    directory: path.join(__dirname, 'temp'),
+    url: 'https://bitbucket.org/{owner}/{name}/get/{version}.tar.gz',
+    maxAge: Infinity
+  };
 
   it('should return an express app', function () {
     var app = bc({});
@@ -27,12 +32,6 @@ describe('bitbucket-component', function () {
     });
 
     describe('.get()', function () {
-
-      var opts = {
-        directory: path.join(__dirname, 'temp'),
-        url: 'https://bitbucket.org/{owner}/{name}/get/{version}.tar.gz'
-      };
-
       before(clean);
       after(clean);
 
@@ -83,14 +82,8 @@ describe('bitbucket-component', function () {
 
     before(function (done) {
       clean();
-
-      app = bc({
-        url: 'https://bitbucket.org/{owner}/{name}/get/{version}.tar.gz',
-        directory: path.join(__dirname, 'temp')
-      });
-
+      app = bc(opts);
       app.use(require('express').logger('dev'));
-
       app.listen(9876, done);
     });
 
@@ -121,6 +114,15 @@ describe('bitbucket-component', function () {
         .expect(200)
         .expect('\nmodule.exports = \'apples\'\n', done);
     });
-  });
 
+    it('should set max-age', function (done) {
+      var inf = 60 * 60 * 24 * 365;
+
+      request(app)
+        // first
+        .get('/stephenmathieson/testything/master/index.js')
+        .expect(200)
+        .expect('cache-control', 'public, max-age=' + inf, done);
+    });
+  });
 });
