@@ -23,7 +23,8 @@
     "should": "~1.2.2",
     "better-assert": "~1.0.0",
     "rimraf": "~2.2.2",
-    "supertest": "~0.7.1"
+    "supertest": "~0.7.1",
+    "win-fork": "~1.1.1"
   },
   "main": "index"
 }

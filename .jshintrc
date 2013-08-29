@@ -21,6 +21,6 @@
     "after": false,
     "afterEach": false
   },
-  "browser": true,
+  "browser": true
 
 }
