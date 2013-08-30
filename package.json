@@ -27,5 +27,18 @@
     "supertest": "~0.7.1",
     "win-fork": "~1.1.1"
   },
-  "main": "index"
+  "main": "index",
+  "bugs": {
+    "url": "https://github.com/stephenmathieson/bitbucket-component/issues"
+  },
+  "bin": {
+    "bitbucket-component": "server.js"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "license": "MIT"
 }
