@@ -3,6 +3,8 @@
 
   serve bitbucket repositories for component(1)
 
+[![Build Status](https://travis-ci.org/stephenmathieson/bitbucket-component.png)](https://travis-ci.org/stephenmathieson/bitbucket-component)
+
 ## License 
 
 (The MIT License)
