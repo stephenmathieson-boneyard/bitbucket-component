@@ -25,19 +25,21 @@ describe('bitbucket-component', function () {
     app.post.should.be.a.function;
   });
 
-  it('should throw when provided a password, but no username', function () {
+  it('should throw when provided a password, but no username', function (done) {
     try {
       bc({ password: 'foo' });
     } catch (e) {
       e.message.should.be.equal('must provide a username');
+      done();
     }
   });
 
-  it('should throw when provided a username, but no password', function () {
+  it('should throw when provided a username, but no password', function (done) {
     try {
       bc({ username: 'foo' });
     } catch (e) {
       e.message.should.be.equal('must provide a password');
+      done();
     }
   });
 
