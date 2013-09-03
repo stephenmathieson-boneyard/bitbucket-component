@@ -95,6 +95,16 @@ describe('bitbucket-component', function () {
           done();
         });
       });
+
+      // cheap test, but we're verifying the error didnt
+      // come back from zlib or tar
+      it('should not try to untar 404s', function (done) {
+        bc.bitbucket.get(opts, 'stephenmathieson', 'blahblah', '1.1.1', function (err) {
+          err.code.should.be.equal('404');
+          err.message.should.match(/failed to fetch/i);
+          done();
+        });
+      });
     });
   });
 
