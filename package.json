@@ -32,7 +32,7 @@
     "url": "https://github.com/stephenmathieson/bitbucket-component/issues"
   },
   "bin": {
-    "bitbucket-component": "server.js"
+    "bitbucket-component": "bin/server.js"
   },
   "directories": {
     "test": "test"
