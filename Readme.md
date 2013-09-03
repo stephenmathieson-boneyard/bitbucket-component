@@ -5,6 +5,48 @@
 
 [![Build Status](https://travis-ci.org/stephenmathieson/bitbucket-component.png)](https://travis-ci.org/stephenmathieson/bitbucket-component)
 
+## Installation
+
+  Binary (server app):
+
+    $ npm install -g stephenmathieson/bitbucket-component
+
+  Express / connect middleware:
+
+    $ npm install --save stephenmathieson/bitbucket-component
+
+## Binary
+
+    $ bitbucket-component --help
+
+      Usage: bitbucket-component [options]
+
+      Options:
+
+        -h, --help                   output usage information
+        -V, --version                output the version number
+        -u, --username [username]    bitbucket.org username
+        -w, --password [password]    bitbucket.org password
+        -d, --directory [directory]  directory for repositories
+        -p, --port [port]            port for server
+        -c, --config [file]          config file
+        --verbose                    verbose output
+
+
+## Middleware
+
+    var bitbucket = require('bitbucket-component');
+
+    var app = express();
+
+    app.use(bitbucket({
+        username: 'your-username',
+        password: 'your-password',
+        directory: '/home/server/repos'
+    }));
+
+    app.listen()
+
 ## License 
 
 (The MIT License)
