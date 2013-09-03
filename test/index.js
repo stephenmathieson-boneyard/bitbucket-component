@@ -1,6 +1,5 @@
 
 var bc = require('..'),
-    assert = require('better-assert'),
     fs = require('fs'),
     path = require('path'),
     rimraf = require('rimraf'),
