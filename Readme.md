@@ -11,7 +11,7 @@
 
 ## Setup
 
-  bitbucket-component(1) expects an `{env}.config.json` to exists.  Put your port number, username and password in there.
+  bitbucket-component(1) expects an `{env}.config.json` to exist in your current directory.  Put your port number, username and password in there.
 
   **env.config.json**
 
