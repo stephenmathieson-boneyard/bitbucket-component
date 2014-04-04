@@ -17,7 +17,7 @@
   },
   "main": "app",
   "bin": {
-    "bitbucket-component": "bin/server.js"
+    "bitbucket-component": "app.js"
   },
   "scripts": {
     "test": "make test",
