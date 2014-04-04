@@ -14,7 +14,9 @@ var ms = require('ms');
  */
 
 var pkg = require('./package');
-var config = require('./config');
+var config = module.parent
+  ? require('./config')
+  : require(process.cwd() + '/config');
 
 // build host string based on credentials
 var host = config.username && config.password
