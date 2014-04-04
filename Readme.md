@@ -1,51 +1,29 @@
 
 # bitbucket-component
 
-  serve bitbucket repositories for component(1)
+  Proxy component(1) requests to BitBucket, allowing both public and private BitBucket repositories to be used as components.
 
 [![Build Status](https://travis-ci.org/stephenmathieson/bitbucket-component.png)](https://travis-ci.org/stephenmathieson/bitbucket-component)
 
 ## Installation
 
-  Binary (server app):
-
     $ npm install -g stephenmathieson/bitbucket-component
 
-  Express / connect middleware:
+## Setup
 
-    $ npm install --save stephenmathieson/bitbucket-component
+  bitbucket-component(1) expects an `{env}.config.json` to exists.  Put your port number, username and password in there.
 
-## Binary
+  **env.config.json**
 
-    $ bitbucket-component --help
+```json
+{
+  "port": 1234,
+  "username": "...",
+  "password": "..."
+}
+```
 
-      Usage: bitbucket-component [options]
-
-      Options:
-
-        -h, --help                   output usage information
-        -V, --version                output the version number
-        -u, --username [username]    bitbucket.org username
-        -w, --password [password]    bitbucket.org password
-        -d, --directory [directory]  directory for repositories
-        -p, --port [port]            port for server
-        -c, --config [file]          config file
-        --verbose                    verbose output
-
-
-## Middleware
-
-    var bitbucket = require('bitbucket-component');
-
-    var app = express();
-
-    app.use(bitbucket({
-        username: 'your-username',
-        password: 'your-password',
-        directory: '/home/server/repos'
-    }));
-
-    app.listen()
+  Switch environments by setting `NODE_ENV` before running `bitbucket-component`.
 
 ## License 
 

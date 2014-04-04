@@ -1,18 +1,10 @@
 
-test:
-	@./node_modules/.bin/mocha \
-		--require should \
-		--timeout 5000 \
-		--reporter spec
+BINS = node_modules/.bin
 
-test-cov: lib-cov
-	@BC_COV=1 \
-		./node_modules/.bin/mocha \
-			--require should \
-			--timeout 5000 \
-			--reporter html-cov > coverage.html
+test: node_modules
+	@NODE_ENV=test $(BINS)/mocha -R spec
 
-lib-cov:
-	@jscoverage lib lib-cov
+node_modules: package.json
+	@npm install
 
-.PHONY: test test-cov
+.PHONY: test

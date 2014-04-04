@@ -2,43 +2,26 @@
   "name": "bitbucket-component",
   "version": "0.0.0",
   "private": true,
-  "description": "serve bitbucket repositories for component(1)",
-  "keywords": [
-    "bitbucket",
-    "component"
-  ],
   "author": "Stephen Mathieson <me@stephenmathieson.com>",
   "repository": {
     "type": "git",
     "url": "git://github.com/stephenmathieson/bitbucket-component.git"
   },
   "dependencies": {
-    "once": "~1.2.0",
-    "mkdirp": "~0.3.5",
-    "tar": "~0.1.18",
-    "express": "~3.3.5",
-    "commander": "~2.0.0",
-    "http-error": "0.0.1"
+    "hyperquest": "~0.3.0",
+    "ms": "~0.6.2"
   },
   "devDependencies": {
-    "mocha": "~1.12.0",
-    "should": "~1.2.2",
-    "rimraf": "~2.2.2",
-    "supertest": "~0.7.1",
-    "win-fork": "~1.1.1"
+    "mocha": "~1.18.2",
+    "supertest": "~0.10.0"
   },
-  "main": "index",
-  "bugs": {
-    "url": "https://github.com/stephenmathieson/bitbucket-component/issues"
-  },
+  "main": "app",
   "bin": {
     "bitbucket-component": "bin/server.js"
   },
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
-    "test": "make test"
+    "test": "make test",
+    "start": "node app"
   },
   "license": "MIT"
 }

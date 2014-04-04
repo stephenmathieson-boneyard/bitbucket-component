@@ -1,4 +1,2 @@
-coverage.html
 node_modules
-lib-cov
-repos
+development.config.json
